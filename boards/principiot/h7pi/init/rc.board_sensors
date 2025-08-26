@@ -1,0 +1,18 @@
+#!/bin/sh
+#
+# board specific sensors init
+#------------------------------------------------------------------------------
+
+board_adc start
+
+# Internal IMU 1
+icm42688p -s -b 1 start
+
+# Internal IMU 2
+iim42653 -s -b 4 start
+
+# Internal baro
+dps310 -I start -a 118
+
+# Internal mag (on external bus)
+ist8310 -X start -a 14
