@@ -44,12 +44,17 @@ static const px4_mft_device_t spi3 = {             // FM25V02A on FMUM native: 3
 
 static const px4_mtd_entry_t fmum_fram = {
 	.device = &spi3,
-	.npart = 1,
+	.npart = 2,
 	.partd = {
 		{
 			.type = MTD_PARAMETERS,
 			.path = "/fs/mtd_params",
-			.nblocks = (32768 / (1 << CONFIG_RAMTRON_EMULATE_SECTOR_SHIFT))
+			.nblocks = (28672 / (1 << CONFIG_RAMTRON_EMULATE_SECTOR_SHIFT))
+		},
+		{
+			.type = MTD_PARAMETERS,
+			.path = "/fs/mtd_caldata",
+			.nblocks = (4096 / (1 << CONFIG_RAMTRON_EMULATE_SECTOR_SHIFT))
 		}
 	},
 };

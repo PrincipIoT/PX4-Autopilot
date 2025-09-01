@@ -95,6 +95,8 @@
 /* Define Battery Voltage Divider and A per V */
 #define BOARD_BATTERY1_V_DIV         (11.0f)     /* TODO: Update divider*/
 
+#define BOARD_ADC_USB_CONNECTED (px4_arch_gpioread(GPIO_OTGFS_VBUS))
+#define BOARD_ADC_USB_VALID     BOARD_ADC_USB_CONNECTED
 
 /* CAN Silence
  *
@@ -106,10 +108,19 @@
 
 /* PWM
  */
-#define DIRECT_PWM_OUTPUT_CHANNELS   8 // TODO: 8?
+#define DIRECT_PWM_OUTPUT_CHANNELS   8
 #define DIRECT_INPUT_TIMER_CHANNELS  12
 
 #define BOARD_HAS_PWM  DIRECT_PWM_OUTPUT_CHANNELS
+
+
+#define GPIO_FMU_CH1                    /* PA0  */ (GPIO_INPUT|GPIO_PULLDOWN|GPIO_PORTA|GPIO_PIN0)
+#define GPIO_FMU_CH2                    /* PA1  */ (GPIO_INPUT|GPIO_PULLDOWN|GPIO_PORTA|GPIO_PIN1)
+#define GPIO_FMU_CH3                    /* PA2  */ (GPIO_INPUT|GPIO_PULLDOWN|GPIO_PORTA|GPIO_PIN2)
+#define GPIO_FMU_CH4                    /* PA3  */ (GPIO_INPUT|GPIO_PULLDOWN|GPIO_PORTA|GPIO_PIN3)
+#define GPIO_FMU_CH5                    /* PB1  */ (GPIO_INPUT|GPIO_PULLDOWN|GPIO_PORTB|GPIO_PIN1)
+#define GPIO_FMU_CH6                    /* PB0  */ (GPIO_INPUT|GPIO_PULLDOWN|GPIO_PORTB|GPIO_PIN0)
+
 
 
 /* Spare GPIO */
@@ -169,6 +180,13 @@
 		GPIO_nLED_BLUE, \
 		GPIO_nLED_GREEN, \
 		GPIO_TONE_ALARM_IDLE, \
+		GPIO_OTGFS_VBUS, \
+		GPIO_FMU_CH1, \
+		GPIO_FMU_CH2, \
+		GPIO_FMU_CH3, \
+		GPIO_FMU_CH4, \
+		GPIO_FMU_CH5, \
+		GPIO_FMU_CH6, \
 	}
 
 #define BOARD_ENABLE_CONSOLE_BUFFER

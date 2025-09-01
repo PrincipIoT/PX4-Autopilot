@@ -5,3 +5,7 @@
 
 # DShot telemetry is always on UART7 TODO: update this?
 # dshot telemetry -d /dev/ttyS5
+# system_power unavailable
+param set-default CBRK_SUPPLY_CHK 894281
+
+param set-default BAT1_V_DIV 11
